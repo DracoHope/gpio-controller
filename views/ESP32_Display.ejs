@@ -1,0 +1,107 @@
+<%- include('partials/header') %>
+
+<div
+  class="jumbotron text-center"
+  style="margin-bottom: 0px; padding: 20px; background-color: rgb(237, 232, 241)"
+>
+  <div class="container" style="margin-bottom: 0px">
+    <i class="fa fa-desktop fa-6x" style="color: rgb(204, 216, 34);"></i>
+    <!-- <h1 class="display-3">ESP 32 Dashboard</h1> -->
+    <h1 style="color: darkblue;">ESP32 Controller Dashboard</h1>
+
+    <p class="esp32-dashboard">Today Date: <%= tdy_date %></p>
+
+    <table id="data" class="center" style="text-align: left;">
+      <tr>
+        <td><p class="esp32-dashboard">My API Key:</p></td>
+        <td><p class="esp32-dashboard"><%=api_key%></p></td>
+      </tr>
+      <tr>
+        <td><p class="esp32-dashboard">Sensor Name:</p></td>
+        <td><p class="esp32-dashboard"><%=sensorName%></p></td>
+      </tr>
+      <tr>
+        <td><p class="esp32-dashboard">Sensor Location:</p></td>
+        <td><p class="esp32-dashboard"><%=sensorLocation%></p></td>
+      </tr>
+      <tr>
+        <td><p class="esp32-dashboard">Temperature:</p></td>
+        <td><p class="esp32-dashboard"><%=temperature%></p></td>
+      </tr>
+      <tr>
+        <td><p class="esp32-dashboard">Humidity:</p></td>
+        <td><p class="esp32-dashboard"><%=humidity%></p></td>
+      </tr>
+      <tr>
+        <td><p class="esp32-dashboard">Heat Index</p></td>
+        <td><p class="esp32-dashboard"><%=heatIndex%></p></td>
+      </tr>
+      <tr>
+        <td><p class="esp32-dashboard">Sensor Counter:</p></td>
+        <td><p class="esp32-dashboard"><%=counter%></p></td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="container" id="instruction" style="text-align: left;">
+    <h3>
+      Instruction for updating to the above demo parameters are as follow:
+    </h3>
+    <p>1. The Updating route is: https://gpio-controller.herokuapp.com/data</p>
+    <p>
+      2. Please use the POST request for for sending the data to the above route
+    </p>
+    <p>
+      3. Must sent all the above display parameter such as My API Key, Sensor
+      Name, Sensor Location, counter, Temperature, Humidity and Heat Index
+    </p>
+    <p>
+      4. The list of parameter and it variable name to be receive and process at
+      the web server
+    </p>
+
+    <table id="parameter">
+      <tr>
+        <th>Display Parameter</th>
+        <th>Variable name to be sent</th> 
+      </tr>
+      <tr>
+        <td>My API Key</td>
+        <td>api_key</td>
+      </tr>
+      <tr>
+        <td>Sensor Name</td>
+        <td>sensorName</td>
+      </tr>
+      <tr>
+        <td>Sensor Location</td>
+        <td>sensorLocation</td>
+      </tr>
+      <tr>
+        <td>Temperature</td>
+        <td>temperature</td>
+      </tr>
+      <tr>
+        <td>Humidity</td>
+        <td>humidity</td>
+      </tr>
+      <tr>
+        <td>Heat Index</td>
+        <td>heatIndex</td>
+      </tr>
+      <tr>
+        <td>Sensor Counter</td>
+        <td>counter</td>
+      </tr>
+    </table>
+<br>
+    <p>
+      5. Sample parameter string to be sent from an ESP32 Device: String
+      httpRequestData = "api_key=" + myIpAddressString + "&sensorName=" +
+      SensorNameString + "&sensorLocation=" + SensorLocationString + "&counter="
+      + String(counter) + "&temperature=" + String(temp) + "&humidity=" +
+      String(humidity) + "&heatIndex=" + String(heatIdx) + "";
+    </p>
+  </div>
+</div>
+<%- include('partials/footer') %>

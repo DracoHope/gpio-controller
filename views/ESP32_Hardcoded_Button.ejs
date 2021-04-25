@@ -1,0 +1,102 @@
+<%- include('partials/pageHeader') %>
+
+  <h1 style="text-align: center; color: blue;">ESP32 GPIO Controller Dashboard</h1>
+  <h6>Please take note: You can create your own delicated route by add "/user/your prefer name" for example: http://gpio-controller.herokuapp.com/user/draco</h6>
+  <h6>This will create a User Button Account under your prefer name as "draco" for this example. You can start creating your customize button under your user account after then</h6>
+  <!-- This is for configuring the Base URL for the device to be access -->
+  <form action="/ip" style="text-align: center; margin-top: 30px;" method="GET">
+    <h4>Please Configure the IP or Port Forwarding Address and the Application Port of the Remote ESP32 or Device First</h4>
+    <label for="" style="margin-right: 20px;">IP or Port Farwarding Address: </label><input type="text" size="100" id="ip" name="ipAddress"
+      placeholder="192.168.1.93 or any Port Forwarding Service such as Ngork Full URL such as http://92832de0.ngrok.io" required>
+    <br>
+    <label for="" style="margin-right: 20px;">Application Port Number(Optional as require only): </label><input type="text" size="55" id="port" name="port"
+      placeholder="8000 or any of your application port number where require."> 
+    <br>
+    <input type="hidden" id="route" name="route" value="hardCodedButton">
+    <button class="btn btn-primary" type="submit" onclick="evt.preventDefault();">Configure IP or Port Forwarding Address</button>
+  </form>
+  <!-- ************************************************************************************************************ -->
+
+<!-- Display Configired Base URL and Application Port Number -->
+  <h3 style="text-align: center; margin-top: 30px; color: blue; font-weight: bold;">Your Current Base URL: <%=baseURL%></h3>
+  <h3 style="text-align: center;color: cornflowerblue; font-weight: bold;">Your Application Port Number: <%=appPort%></h3>
+  <input type="hidden" id="route" name="webServerURLBaseURL" value='<%=webServerURLBaseURL%>'>
+<!-- ************************************************************************************************************ -->
+
+<!-- ************************************************************************************************************ -->
+    <div class="col"  style="border: 4px solid greenyellow;">
+      <h3 style="text-align: center;">Static Hard Coded Button Control</h3>
+      
+  <div style="text-align: center; margin-bottom: 20px; margin-top: 20px;">
+    <form action="/gpio/ledControl" style="text-align: center; " method="POST" class="frm">
+      <input type="hidden" id="led" name="led" value="10">
+      <input type="hidden" id="ledStatus" name="ledStatus" value="on">
+      <input type="hidden" id="esp32BaseURL10On" name="esp32BaseURL" value=<%=baseURL%>>
+      <input type="hidden" id="esp32BaseURL10OnPort" name="esp32BasePort" value=<%=appPort%>>
+      <button class="btn btn-danger" type="submit" style="color: white;">GPIO 10 ON (RED
+        LED)</button>
+    </form>
+    <br>
+    <form action="/gpio/ledControl" style="text-align: center;" method="POST" class="frm">
+      <input type="hidden" id="led2" name="led" value="10">
+      <input type="hidden" id="ledStatus2" name="ledStatus" value="off">
+      <input type="hidden" id="esp32BaseURL10Off" name="esp32BaseURL" value=<%=baseURL%>>
+      <input type="hidden" id="esp32BaseURL10OnPort" name="esp32BasePort" value=<%=appPort%>>
+      <button class="btn btn-primary" type="submit">GPIO 10 OFF
+        (RED OFF)</button>
+    </form>
+
+  </div>
+
+
+  <div style="text-align: center; margin-bottom: 20px;">
+
+    <form action="/gpio/ledControl" style="text-align: center;" method="POST" class="frm">
+      <input type="hidden" id="led21" name="led" value="21">
+      <input type="hidden" id="ledStatus21" name="ledStatus" value="on">
+      <input type="hidden" id="esp32BaseURL21OnURL" name="esp32BaseURL" value=<%=baseURL%>>
+      <input type="hidden" id="esp32BaseURL21OnPort" name="esp32BasePort" value=<%=appPort%>>
+      <button class="btn btn-light" type="submit" style="background-color: greenyellow;">
+        GPIO 21 ON (Green
+        LED)</button>
+    </form>
+    <br>
+
+    <form action="/gpio/ledControl" style="text-align: center;" method="POST" class="frm">
+      <input type="hidden" id="led3" name="led" value="21">
+      <input type="hidden" id="ledStatus21Off" name="ledStatus" value="off">
+      <input type="hidden" id="esp32BaseURL21Off" name="esp32BaseURL" value=<%=baseURL%>>
+      <input type="hidden" id="esp32BaseURL21OffPort" name="esp32BasePort" value=<%=appPort%>>
+      <button class="btn btn-warning" type="submit" style="background-color: violet;">
+        GPIO 21 OFF (Green
+        OFF)</button>
+    </form>
+    <br>
+    <form action="/gpio/ledControl" style="text-align: center;" method="POST" class="frm">
+      <input type="hidden" id="led22On" name="led" value="22">
+      <input type="hidden" id="ledStatus22" name="ledStatus" value="on">
+      <input type="hidden" id="esp32BaseURL22On" name="esp32BaseURL" value=<%=baseURL%>>
+      <input type="hidden" id="esp32BaseURL21OnPort" name="esp32BasePort" value=<%=appPort%>>
+      <button class="btn btn-light" type="submit" style="background-color: yellow;">
+        GPIO 22 ON (Yellow
+        LED)</button>
+    </form>
+    <br>
+
+    <form action="/gpio/ledControl" style="text-align: center;" method="POST" class="frm" onsubmit="return validateMyForm();">
+      <input type="hidden" id="led22Off" name="led" value="22">
+      <input type="hidden" id="ledStatus22Off" name="ledStatus" value="off">
+      <input type="hidden" id="esp32BaseURL22Off" name="esp32BaseURL" value=<%=baseURL%>>
+      <input type="hidden" id="esp32BaseURL21OnPort" name="esp32BasePort" value=<%=appPort%>>
+      <button class="btn btn-warning" type="submit" style="background-color: rgb(255, 145, 0);" >
+        GPIO 22 OFF (Yellow
+        OFF)</button>
+    </form>
+
+  </div>
+
+    </div>
+<!-- ************************************************************************************************************ -->
+
+
+  <%- include('partials/footer') %>
