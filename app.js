@@ -81,14 +81,11 @@ const app = express();
 // The below connection string will be connectin to the MongoDB at "mongodb://localhost:27017/" 
 // The connecting Database name is "esp32DB"
 // If "esp32DB" is not exist then it will create a new Database by this name. You may change the database name to your own preference 
-// mongoose.connect("mongodb://localhost:27017/esp32DB", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/esp32DB", {useNewUrlParser: true, useUnifiedTopology: true});
 //
 // Connecting to remote MongoDB Atlas Database
 // Please create a user account at: https://www.mongodb.com/cloud/atlas/register
 // mongoose.connect("mongodb+srv://<user name:<password>@cluster0.<Cluster Name>.mongodb.net>/<Database Name>", {useNewUrlParser: true, useUnifiedTopology: true});
-// mongoose.connect("mongodb+srv://<admin-ming:draco552@cluster0.kqt7d.mongodb.net/esp32DB", {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect("mongodb+srv://admin-ming:draco552@cluster0.kqt7d.mongodb.net/esp32DB", {useNewUrlParser: true, useUnifiedTopology: true});
-//mongodb+srv://admin-ming:<password>@cluster0.kqt7d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
 // Step: 2A
 // Create a new Schema for the Mongo Server Database
